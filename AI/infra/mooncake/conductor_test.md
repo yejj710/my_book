@@ -158,7 +158,7 @@ mooncake_conductor
 ## toy-proxy
 
 ```sh
-python cache_aware_disagg_proxy.py --prefiller-hosts 127.0.0.1 --prefiller-ports 8100 --decoder-host 127.0.0.1 --decoder-ports 8200 --conductor-address 127.0.0.1:13333
+python cache_aware_disagg_proxy.py --prefiller-hosts 127.0.0.1 --prefiller-ports 8100 --decoder-host 127.0.0.1 --decoder-ports 8200 --conductor-address 127.0.0.1:13333 --port 8877 --host 127.0.0.1
 ```
 
 ## curl命令
@@ -177,6 +177,6 @@ curl -X POST http://127.0.0.1:8000/v1/completions \
 
 ## aisbench 性能测试
 ```sh
-ais_bench --mode perf --models vllm_api_general_stream --datasets sharegpt_gen --num-prompts 1 --debug --num-warmups 0
+ais_bench --mode perf --models vllm_api_stream_chat_multiturn --datasets sharegpt_gen --num-prompts 1 --debug --num-warmups 0
 ```
 
