@@ -158,10 +158,15 @@ mooncake_conductor
 ## toy-proxy
 
 ```sh
-python cache_aware_disagg_proxy.py --prefiller-hosts 127.0.0.1 --prefiller-ports 8100 --decoder-host 127.0.0.1 --decoder-ports 8200 --conductor-address 127.0.0.1:13333 --port 8877 --host 127.0.0.1
+python proxy/cache_aware.py --prefiller-hosts 192.168.9.122 192.168.9.129 --prefiller-ports 8100 8100 --decoder-host 192.168.9.122 192.168.9.129 --decoder-ports 8200 8200 --conductor-address 192.168.9.129:13333 --port 8877 --host 192.168.9.129
+```
+
+```sh
+python proxy/load_balance.py --prefiller-hosts 192.168.9.122 192.168.9.129 --prefiller-ports 8100 8100 --decoder-host 192.168.9.122 192.168.9.129 --decoder-ports 8200 8200  --port 8877 --host 192.168.9.129
 ```
 
 ## curl命令
+
 ```sh
 curl -X POST http://127.0.0.1:8000/v1/completions \
     -H "Content-Type: application/json" \
