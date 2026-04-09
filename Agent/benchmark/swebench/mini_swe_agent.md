@@ -15,6 +15,12 @@ mini-SWE-agent (解题) ──→ SWE-bench (评分)
 | **1. 解题** | mini-SWE-agent | 接收 GitHub issue，通过 LLM + bash 生成 patch |
 | **2. 评分** | SWE-bench      | 应用 patch 到代码库，运行测试，判定是否解决   |
 
+评测命令参考：
+
+```sh
+mini-extra swebench   -c swebench.yaml   -m hosted_vllm/qwen3   -c model.model_kwargs.api_base='"http://127.0.0.1:6767/v1"'   -c model.model_kwargs.api_key='"EMPTY"'   -c model.cost_tracking='"ignore_errors"'   --subset lite   --split test   --workers 1   --output ./runs/qwen3_vllm_lite_test   --slice "100:101"
+```
+
 ### 与其他模型的对比
 
 SWE-bench 不仅可以评估 mini-SWE-agent，实际上可以评估**任何能生成 patch 的模型/agent**：
